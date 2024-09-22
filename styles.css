@@ -34,6 +34,10 @@ main{
 }
 
 index main h1{
+	text-align: center;
+}
+
+index main h2{
 	font-family: fantasy;
 	padding-bottom: 0rem;
 }
@@ -59,7 +63,7 @@ form{
 	margin: 0 auto;
 }
 input,textarea,select,button{
-	margin-buttom: 1rem;
+	margin-bottom: 1rem;
 	padding: 0.5 rem;
 }
 button{
@@ -81,5 +85,6 @@ button{
 }
 
 img{
+	margin-bottom: 10px;
 	align-content: center;
 }
