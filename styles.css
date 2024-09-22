@@ -52,6 +52,23 @@ footer{
 	width: 100%;
 }
 
+form{
+	display: flex;
+	flex-direction: column;
+	max-width: 300px;
+	margin: 0 auto;
+}
+input,textarea,select,button{
+	margin-buttom: 1rem;
+	padding: 0.5 rem;
+}
+button{
+	background-color: darkblue;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+
 #news-container {
 	margin-top: 2rem;
 	margin-bottom: 2rem;
