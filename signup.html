@@ -34,8 +34,49 @@
 				<option value = "student">Student</option>
 				<option value = "alumni">Alumni</option>
 			</select>
-			<button type = "submit">Sign Up</button>
+			<button type = "submit" id = signupBotton >Sign Up</button>
 		</form>
+
+		<script type="module">
+		  // Import the functions you need from the SDKs you need
+		  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+		  // TODO: Add SDKs for Firebase products that you want to use
+		  // https://firebase.google.com/docs/web/setup#available-libraries
+
+		  // Your web app's Firebase configuration
+		  const firebaseConfig = {
+		    apiKey: "AIzaSyB66R655XExyZfO8xnBbxD5wTRz6ygj2f0",
+		    authDomain: "loginsystem-41999.firebaseapp.com",
+		    projectId: "loginsystem-41999",
+		    storageBucket: "loginsystem-41999.firebasestorage.app",
+		    messagingSenderId: "956176613281",
+		    appId: "1:956176613281:web:d61b28befc8a6943d315e0"
+		  };
+
+		  // Initialize Firebase
+		  const app = initializeApp(firebaseConfig);
+
+		  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+
+		  	  document.getElementByID('signupButton').addEventListener('click', (event)
+		  	=>{
+		  		event.preventDefault()
+		  		const auth = getAuth()
+		  		const email = document.getElementByID('email').value
+		  		const password = document.getElementByID('password').
+		  			value
+		  	createUserWithEmailAndPassword(auth, email, password)
+		  		.then((userCredential) => {
+		  			const user = userCredential.user;
+		  		})
+		  		.catch((error) => {
+		  			const errorCode = error.code;
+		  			const errorMessage = error.message;
+		  		});
+		  	})
+		  	  
+	</script>
+
 	</main>
 
 	<footer>
