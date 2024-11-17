@@ -50,22 +50,31 @@
 		  };
 
 		  const app = initializeApp(firebaseConfig);
+		  const database = getDatabase(app);
 
-		  import(getAuth, createUserWithEmailAndPassword) from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-		  document.getElemntbyId('signupButton').addEventListener('click', (event)=>{
-		  	event.preventDefault()
-		  	const auth = getAuth()
-		  	const email = document.getElemntbyId('email').value
-		  	const password = document.getElemntbyId('password').value
-		  	createUserWithEmailAndPassword(auth, email, password)
-		  		.then((userCredential) => {
-		  			const user = userCredential.user;
-		  		})
-		  		.catch((error) => {
-		  			const errorCode = error.code;
-		  			const errorMessage = error.message;
-		  		});
+		  const postForm = document.getElementById('new-post-form');
+		  postForm.addEventListener('submit', (e) => {
+		  	e.preventDefault();
+
+		  	const title = document.getElementById('post-title').value;
+		  	const content = document.getElementById('post-conent').value;
+
+		  	const postRef = database.ref('posts');
+
+		  	const db = getDatabase();
+		  	set(ref(db, 'post/'){)
+		  		title: title,
+		  		content: content,
+		  		timestamp: Date.now()
 		  	})
+		  	.then(() => {
+		  		alert('Post saved Successfully!');
+		  		postForm.reset();
+		  	})
+		  	.catch((error) => {
+		  		console.error('Error saving post: ', error);
+		  	});
+		  });
 
 	<footer>
 		<p>&copy; 2024 Lumin8 Community Hub. All rights researved.</p>
