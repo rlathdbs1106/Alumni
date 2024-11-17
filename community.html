@@ -22,7 +22,49 @@
 
 	<main>
 		<h1>Community</h1>
+		<div id = "post-form">
+			<h2>Create a New Post </h2>
+			<form id = "new-post-form">
+				<input type = "text" id = "post-title" placeholder = "Title" required>
+				<textarea id = "post-content" placeholder = "Content" required></textarea>
+				<button type = "submit"> Submit Post</button>
+			</form>
+		</div>
+		<div id = "posts-container"></div>
 	</main>
+	<script>
+		  //Import the functions you need from the SDKs you need
+		  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+		  // TODO: Add SDKs for Firebase products that you want to use
+		  // https://firebase.google.com/docs/web/setup#available-libraries
+
+		  // Your web app's Firebase configuration
+		  const firebaseConfig = {
+		    apiKey: "AIzaSyB66R655XExyZfO8xnBbxD5wTRz6ygj2f0",
+		    authDomain: "loginsystem-41999.firebaseapp.com",
+		    projectId: "loginsystem-41999",
+		    storageBucket: "loginsystem-41999.firebasestorage.app",
+		    messagingSenderId: "956176613281",
+		    appId: "1:956176613281:web:d61b28befc8a6943d315e0"
+		  };
+
+		  const app = initializeApp(firebaseConfig);
+
+		  import(getAuth, createUserWithEmailAndPassword) from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+		  document.getElemntbyId('signupButton').addEventListener('click', (event)=>{
+		  	event.preventDefault()
+		  	const auth = getAuth()
+		  	const email = document.getElemntbyId('email').value
+		  	const password = document.getElemntbyId('password').value
+		  	createUserWithEmailAndPassword(auth, email, password)
+		  		.then((userCredential) => {
+		  			const user = userCredential.user;
+		  		})
+		  		.catch((error) => {
+		  			const errorCode = error.code;
+		  			const errorMessage = error.message;
+		  		});
+		  	})
 
 	<footer>
 		<p>&copy; 2024 Lumin8 Community Hub. All rights researved.</p>
