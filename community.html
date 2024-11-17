@@ -32,10 +32,9 @@
 		</div>
 		<div id = "posts-container"></div>
 	</main>
-	<script>
-		  //Import the functions you need from the SDKs you need
-		  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-		  import{getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js"
+		<script type="module">
+		  // Import the functions you need from the SDKs you need
+		  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 		  // TODO: Add SDKs for Firebase products that you want to use
 		  // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -43,13 +42,13 @@
 		  const firebaseConfig = {
 		    apiKey: "AIzaSyB66R655XExyZfO8xnBbxD5wTRz6ygj2f0",
 		    authDomain: "loginsystem-41999.firebaseapp.com",
-		    databaseURL: "https://loginsystem-41999-default-rtdb.firebaseio.com/",
 		    projectId: "loginsystem-41999",
 		    storageBucket: "loginsystem-41999.firebasestorage.app",
 		    messagingSenderId: "956176613281",
 		    appId: "1:956176613281:web:d61b28befc8a6943d315e0"
 		  };
 
+		  // Initialize Firebase
 		  const app = initializeApp(firebaseConfig);
 		  const database = getDatabase(app);
 
@@ -58,30 +57,30 @@
 		  	e.preventDefault();
 
 		  	const title = document.getElementById('post-title').value;
-		  	const content = document.getElementById('post-conent').value;
+		  	const content = document.getElementById('post-content').value;
 
 		  	const postRef = database.ref('posts');
 
 		  	const db = getDatabase();
-		  	set(ref(db, 'post/'){)
+		  	const postData = {
 		  		title: title,
 		  		content: content,
 		  		timestamp: Date.now()
 		  	};
 
 		 const newPostKey = push(child(ref(db), 'posts')).key;
-		 const updates = [];
+		 const updates = {};
 		 updates['/posts/' + newPostKey] = postData;
-
 		 return update(ref(db), updates)
 		  	.then(() => {
-		  		alert('Post saved Successfully!');
+		  		alert('Post saved successfully!');
 		  		postForm.reset();
 		  	})
 		  	.catch((error) => {
 		  		console.error('Error saving post: ', error);
 		  	});
 		  });
+		</script>
 
 	<footer>
 		<p>&copy; 2024 Lumin8 Community Hub. All rights researved.</p>
